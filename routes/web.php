@@ -39,5 +39,36 @@ Route::namespace('admin')
 
     // feature
     Route::get('/home-feature', 'AdminHomeController@indexFeature')->name('home-feature');
-    Route::get('/edit-feature', 'AdminHomeController@editFeature')->name('edit-feature');
+    Route::get('/edit-feature/{id}', 'AdminHomeController@editFeature')->name('edit-feature');
+    Route::post('/add-feature', 'AdminHomeController@storeFeature')->name('add-feature');
+    Route::get('/delete-feature/{id}', 'AdminHomeController@destroyFeature');
+    Route::post('/update-feature', 'AdminHomeController@updateFeature');
+
+    // article
+    Route::get('/home-article', 'ArticleController@index')->name('home-article');
+    Route::get('/edit-article/{id}', 'ArticleController@edit')->name('edit-article');
+    Route::post('/add-article', 'ArticleController@store')->name('add-article');
+    Route::get('/delete-article/{id}', 'ArticleController@destroy');
+    Route::post('/update-article', 'ArticleController@update');
+
+    // Category
+    Route::get('/home-category', 'CategoryController@index')->name('home-category');
+    Route::get('/edit-category/{id}', 'CategoryController@edit')->name('edit-category');
+    Route::post('/add-category', 'CategoryController@store')->name('add-category');
+    Route::get('/delete-category/{id}', 'CategoryController@destroy');
+    Route::post('/update-category', 'CategoryController@update')->name('update-category');
+    
+    // Category Portofolio
+    Route::get('/home-category-portofolio', 'CategoryPortofolioController@index')->name('home-category-portofolio');
+    Route::get('/edit-category-portofolio/{id}', 'CategoryPortofolioController@edit')->name('edit-category-portofolio');
+    Route::post('/add-category-portofolio', 'CategoryPortofolioController@store')->name('add-category-portofolio');
+    Route::get('/delete-category-portofolio/{id}', 'CategoryPortofolioController@destroy');
+    Route::post('/update-category-portofolio', 'CategoryPortofolioController@update')->name('update-category-portofolio');
+
+    // Portofolio
+    Route::get('/home-portofolio', 'PortofolioController@index')->name('home-portofolio');
+    Route::get('/edit-portofolio/{id}', 'PortofolioController@edit')->name('edit-portofolio');
+    Route::post('/add-portofolio', 'PortofolioController@store')->name('add-portofolio');
+    Route::get('/delete-portofolio/{id}', 'PortofolioController@destroy');
+    Route::post('/update-portofolio', 'PortofolioController@update')->name('update-portofolio');
 });

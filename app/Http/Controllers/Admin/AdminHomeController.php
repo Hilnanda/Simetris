@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Article;
 use App\Models\Carousel;
 use App\Models\Feature;
 use Illuminate\Http\Request;
@@ -84,7 +85,6 @@ class AdminHomeController extends Controller
     {
         Carousel::find($id)->delete();
 
-
         return back()->with('Success', 'Successfully delete data!');
     }
 
@@ -115,19 +115,10 @@ class AdminHomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function editFeature()
+    public function editFeature($id)
     {
-        return view('admin.pages.edit-feature');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $feature = Feature::find($id);
+        return view('admin.pages.edit-feature',compact('feature'));
     }
 
     /**
@@ -136,31 +127,10 @@ class AdminHomeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function storeFeature(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        Feature::create($request->all());
+        return back()->with('Success', 'Successfully added data!');
     }
 
     /**
@@ -170,9 +140,11 @@ class AdminHomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updateFeature(Request $request)
     {
-        //
+        $feature = Feature::find($request->id);
+        $feature->update($request->all());
+        return redirect('../home-feature')->with('Success', 'Successfully updated data!');
     }
 
     /**
@@ -181,8 +153,12 @@ class AdminHomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroyFeature($id)
     {
-        //
+        Feature::find($id)->delete();
+
+        return back()->with('Success', 'Successfully delete data!');
     }
+
+    
 }

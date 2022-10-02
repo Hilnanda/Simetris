@@ -4,13 +4,13 @@
 <aside class="menu-sidebar d-none d-lg-block">
     <div class="logo">
         <a href="#">
-            <img src="images/icon/logo.png" alt="Cool Admin" />
+            <img src="{{ url('admin/images/logo2.png') }}" alt="Cool Admin" />
         </a>
     </div>
     <div class="menu-sidebar__content js-scrollbar1">
         <nav class="navbar-sidebar">
             <ul class="list-unstyled navbar__list">
-                <li class="active has-sub">
+                <li class="has-sub">
                     <a class="js-arrow" href="#">
                         <i class="fas fa-tachometer-alt"></i>Home</a>
                     <ul class="list-unstyled navbar__sub-list js-sub-list">
@@ -27,6 +27,14 @@
                             <a href="index4.html">Dashboard 4</a>
                         </li>
                     </ul>
+                </li>
+                <li class="{{ request()->is('home-article*') ? 'active' : '' }}">
+                    <a href="{{ route('home-article') }}">
+                        <i class="fa fa-quote-left"></i>Article</a>
+                </li>
+                <li class="{{ request()->is('home-portofolio*') ? 'active' : '' }}">
+                    <a href="{{ route('home-portofolio') }}">
+                        <i class="fas fa-copy"></i></i>Portofolio</a>
                 </li>
                 <li>
                     <a href="chart.html">

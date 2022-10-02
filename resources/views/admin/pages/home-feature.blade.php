@@ -14,57 +14,30 @@
                                 <i class="zmdi zmdi-plus"></i>add item</button>
                         </div>
                     </div>
+                    @foreach ($feature as $item)
                     <div class="col-md-4">
                         <div class="card">
                             <div class="card-body">
                                 <div class="mx-auto d-block">
-                                    <i class="fas fa-tachometer-alt"></i>
-                                    <h4 class="text-sm-left mt-2 mb-1">Steven Lee</h4>
+                                    {!! $item->feature_icon !!}
+                                    <h4 class="text-sm-left mt-2 mb-1">{{ $item->feature_title }}</h4>
                                     <div class="location text-sm-left">
-                                        Some quick example text to build on the card title and make up the bulk of the card's content.</div>
+                                        @if (strlen($item->feature_desc) < 100)
+                                        {!! $item->feature_desc !!}
+                                        @else
+                                            {!! substr($item->feature_desc, 0, 100) . '.....' !!}
+                                        @endif
+                                    </div>
                                 </div>
                                 <hr>
                                 <div style="text-align: right">
-                                    <a class="btn btn-warning" href="">Edit</a>
-                                    <a class="btn btn-danger" href="">Delete</a>
+                                    <a class="btn btn-warning" href="/edit-feature/{{$item->id}}">Edit</a>
+                                    <a href="/delete-feature/{{$item->id}}" class="btn btn-danger delete">Delete</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="mx-auto d-block">
-                                    <i class="fas fa-tachometer-alt"></i>
-                                    <h4 class="text-sm-left mt-2 mb-1">Steven Lee</h4>
-                                    <div class="location text-sm-left">
-                                        Some quick example text to build on the card title and make up the bulk of the card's content.</div>
-                                </div>
-                                <hr>
-                                <div style="text-align: right">
-                                    <a class="btn btn-warning" href="">Edit</a>
-                                    <a class="btn btn-danger" href="">Delete</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="mx-auto d-block">
-                                    <i class="fas fa-tachometer-alt"></i>
-                                    <h4 class="text-sm-left mt-2 mb-1">Steven Lee</h4>
-                                    <div class="location text-sm-left">
-                                        Some quick example text to build on the card title and make up the bulk of the card's content.</div>
-                                </div>
-                                <hr>
-                                <div style="text-align: right">
-                                    <a class="btn btn-warning" href="/edit-feature">Edit</a>
-                                    <a class="btn btn-danger" href="">Delete</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -83,41 +56,42 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                <form action="admin/add-feature" method="post" class="form-horizontal">
+                    {{ csrf_field() }}
                     <div class="modal-body">
                         <div class="row form-group">
                             <div class="col col-md-3">
-                                <label for="text-input" class=" form-control-label">Text Title</label>
+                                <label for="feature_icon" class=" form-control-label">Icon Feature</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input type="text" id="text-input" name="text-input" placeholder="Text"
+                                <input type="text" id="feature_icon" name="feature_icon" placeholder="<i class='fas fa-tachometer-alt'></i>"
                                     class="form-control">
-                                <small class="form-text text-muted">Masukkan Title Carousell</small>
+                                <small class="form-text text-muted">Masukkan Icon Feature</small>
                             </div>
                         </div>
                         <div class="row form-group">
                             <div class="col col-md-3">
-                                <label for="textarea-input" class=" form-control-label">Textarea</label>
+                                <label for="feature_title" class=" form-control-label">Feature Title</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <textarea name="textarea-input" id="textarea-input" rows="9" placeholder="Masukkan Desc. Carousell..."
+                                <input type="text" id="feature_title" name="feature_title" placeholder="Masukkan Title Feature"
+                                    class="form-control">
+                                <small class="form-text text-muted">Masukkan Title Feature</small>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="feature_desc" class=" form-control-label">Feature Desc.</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <textarea name="feature_desc" id="feature_desc" rows="9" placeholder="Masukkan Desc. Feature..."
                                     class="form-control"></textarea>
                             </div>
                         </div>
-
-                        <div class="row form-group">
-                            <div class="col col-md-3">
-                                <label for="file-input" class=" form-control-label">File input</label>
-                            </div>
-                            <div class="col-12 col-md-9">
-                                <input type="file" id="file-input" name="file-input" class="form-control-file">
-                            </div>
-                        </div>
-
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-primary">Confirm</button>
+                        <input type="submit" class="btn btn-primary" value="Confirm">
                     </div>
                 </form>
             </div>
