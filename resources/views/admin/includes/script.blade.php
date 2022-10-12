@@ -18,11 +18,12 @@
 <script src="{{ url('admin/vendor/chartjs/Chart.bundle.min.js') }}"></script>
 <script src="{{ url('admin/vendor/select2/select2.min.js') }}">
 </script>
+<script src="{{ asset('admin/js/main.js') }}"></script>
+<script src="{{ asset('admin/js/app.js') }}"></script>
 <script src="{{ asset('https://unpkg.com/sweetalert/dist/sweetalert.min.js') }}"></script>
 
 
 <!-- Main JS-->
-<script src="admin/js/main.js"></script>
 
 <script>
     @if(session('Success'))

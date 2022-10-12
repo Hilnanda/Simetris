@@ -25,6 +25,8 @@ Route::namespace('User')->group(function () {
     Route::get('/portofolio', 'WorkController@index')->name('portofolio');
 });
 
+Route::post('/add-message', 'admin\MessageController@store')->name('add-message');
+
 Auth::routes();
 
 Route::namespace('admin')
@@ -65,10 +67,24 @@ Route::namespace('admin')
     Route::get('/delete-category-portofolio/{id}', 'CategoryPortofolioController@destroy');
     Route::post('/update-category-portofolio', 'CategoryPortofolioController@update')->name('update-category-portofolio');
 
+    // Sosmed
+    Route::get('/home-sosmed', 'SosmedController@index')->name('home-sosmed');
+    Route::get('/edit-sosmed/{id}', 'SosmedController@edit')->name('edit-sosmed');
+    Route::post('/add-sosmed', 'SosmedController@store')->name('add-sosmed');
+    Route::get('/delete-sosmed/{id}', 'SosmedController@destroy');
+    Route::post('/update-sosmed', 'SosmedController@update')->name('update-sosmed');
+
     // Portofolio
     Route::get('/home-portofolio', 'PortofolioController@index')->name('home-portofolio');
     Route::get('/edit-portofolio/{id}', 'PortofolioController@edit')->name('edit-portofolio');
     Route::post('/add-portofolio', 'PortofolioController@store')->name('add-portofolio');
     Route::get('/delete-portofolio/{id}', 'PortofolioController@destroy');
     Route::post('/update-portofolio', 'PortofolioController@update')->name('update-portofolio');
+
+    // Message
+    Route::get('/home-message', 'MessageController@index')->name('home-message');
+    Route::get('/delete-message/{id}', 'MessageController@destroy');
+    Route::get('/markAsRead', function() {
+        auth()->user()->unreadNotifications->markAsRead();
+    });
 });

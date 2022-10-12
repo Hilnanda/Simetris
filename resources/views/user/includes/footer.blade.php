@@ -29,11 +29,13 @@
                 </div>
                 <div class="col-sm-5 sm-margin-b-30">
                     <h2 class="color-white">Send Us A Note</h2>
-                    <input type="text" class="form-control footer-input margin-b-20" placeholder="Name" required>
-                    <input type="email" class="form-control footer-input margin-b-20" placeholder="Email" required>
-                    <input type="text" class="form-control footer-input margin-b-20" placeholder="Phone" required>
-                    <textarea class="form-control footer-input margin-b-30" rows="6" placeholder="Message" required></textarea>
-                    <button type="submit" class="btn-theme btn-theme-sm btn-base-bg text-uppercase">Submit</button>
+                    <form action="add-message" method="post">
+                        {{ csrf_field() }}
+                        <input type="text" name="message_nama" class="form-control footer-input margin-b-20" placeholder="Name" required>
+                        <input type="email" name="message_email" class="form-control footer-input margin-b-20" placeholder="Email" required>
+                        <textarea class="form-control footer-input margin-b-30" name="message_text" rows="6" placeholder="Message" required></textarea>
+                        <input type="submit" class="btn-theme btn-theme-sm btn-base-bg text-uppercase" >
+                    </form>
                 </div>
             </div>
             <!--// end row -->

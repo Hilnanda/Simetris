@@ -12,7 +12,7 @@
             <ul class="list-unstyled navbar__list">
                 <li class="has-sub">
                     <a class="js-arrow" href="#">
-                        <i class="fas fa-tachometer-alt"></i>Home</a>
+                        <i class="fa fa-tachometer"></i>Home</a>
                     <ul class="list-unstyled navbar__sub-list js-sub-list">
                         <li class="{{ request()->is('home-admin*') ? 'active' : '' }}">
                             <a href="{{ route('home-carousel') }}">Carousel</a>
@@ -34,11 +34,19 @@
                 </li>
                 <li class="{{ request()->is('home-portofolio*') ? 'active' : '' }}">
                     <a href="{{ route('home-portofolio') }}">
-                        <i class="fas fa-copy"></i></i>Portofolio</a>
+                        <i class="fa fa-copy"></i></i>Portofolio</a>
+                </li>
+                <li class="{{ request()->is('home-message*') ? 'active' : '' }}">
+                    <a href="{{ route('home-message') }}">
+                        <i class="fa fa-envelope"></i></i>Message</a>
+                </li>
+                <li class="{{ request()->is('home-sosmed*') ? 'active' : '' }}">
+                    <a href="{{ route('home-sosmed') }}">
+                        <i class="fa fa-users"></i></i>Social Media</a>
                 </li>
                 <li>
                     <a href="chart.html">
-                        <i class="fas fa-chart-bar"></i>Charts</a>
+                        <i class="fa fa-chart-bar"></i>Charts</a>
                 </li>
                 <li>
                     <a href="table.html">
