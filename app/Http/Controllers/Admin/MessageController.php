@@ -41,7 +41,7 @@ class MessageController extends Controller
     public function store(Request $request)
     {
         Message::create($request->all());
-        auth()->user()->notify(new RepliedToThread);
+        // auth()->user()->notify(new RepliedToThread);
         return back()->with('Success', 'Successfully Send Message!');
     }
 

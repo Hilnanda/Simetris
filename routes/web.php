@@ -81,6 +81,27 @@ Route::namespace('admin')
     Route::get('/delete-portofolio/{id}', 'PortofolioController@destroy');
     Route::post('/update-portofolio', 'PortofolioController@update')->name('update-portofolio');
 
+    // Team
+    Route::get('/home-team', 'TeamController@index')->name('home-team');
+    Route::get('/edit-team/{id}', 'TeamController@edit')->name('edit-team');
+    Route::post('/add-team', 'TeamController@store')->name('add-team');
+    Route::get('/delete-team/{id}', 'TeamController@destroy');
+    Route::post('/update-team', 'TeamController@update')->name('update-team');
+
+    // About Us
+    Route::get('/home-about_us', 'AboutUsController@index')->name('home-about_us');
+    Route::get('/edit-about_us/{id}', 'AboutUsController@edit')->name('edit-about_us');
+    Route::post('/add-about_us', 'AboutUsController@store')->name('add-about_us');
+    Route::get('/delete-about_us/{id}', 'AboutUsController@destroy');
+    Route::post('/update-about_us', 'AboutUsController@update')->name('update-about_us');
+
+    // Contact Us
+    Route::get('/home-contact_us', 'ContactUsController@index')->name('home-contact_us');
+    Route::get('/edit-contact_us/{id}', 'ContactUsController@edit')->name('edit-contact_us');
+    Route::post('/add-contact_us', 'ContactUsController@store')->name('add-contact_us');
+    Route::get('/delete-contact_us/{id}', 'ContactUsController@destroy');
+    Route::post('/update-contact_us', 'ContactUsController@update')->name('update-contact_us');
+
     // Message
     Route::get('/home-message', 'MessageController@index')->name('home-message');
     Route::get('/delete-message/{id}', 'MessageController@destroy');
