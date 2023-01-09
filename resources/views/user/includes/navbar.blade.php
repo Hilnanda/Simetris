@@ -24,9 +24,10 @@
                 <div class="menu-container">
                     <ul class="navbar-nav navbar-nav-right">
                         <li class="nav-item"><a class="nav-item-child nav-item-hover {{ request()->is('home*') ? 'active' : '' }}" href="{{ route('home') }}">Home</a></li>
-                        <li class="nav-item"><a class="nav-item-child nav-item-hover {{ request()->is('pricing*') ? 'active' : '' }}" href="{{ route('pricing') }}">Pricing</a></li>
+                        {{-- <li class="nav-item"><a class="nav-item-child nav-item-hover {{ request()->is('pricing*') ? 'active' : '' }}" href="{{ route('pricing') }}">Pricing</a></li> --}}
                         <li class="nav-item"><a class="nav-item-child nav-item-hover {{ request()->is('about*') ? 'active' : '' }}" href="{{ route('about') }}">About</a></li>
                         <li class="nav-item"><a class="nav-item-child nav-item-hover {{ request()->is('products*') ? 'active' : '' }}" href="{{ route('products') }}">Products</a></li>
+                        <li class="nav-item"><a class="nav-item-child nav-item-hover {{ request()->is('service*') ? 'active' : '' }}" href="{{ route('service') }}">Service</a></li>
                         <li class="nav-item"><a class="nav-item-child nav-item-hover {{ request()->is('faq*') ? 'active' : '' }}" href="{{ route('faq') }}">FAQ</a></li>
                         <li class="nav-item"><a class="nav-item-child nav-item-hover {{ request()->is('contact*') ? 'active' : '' }}" href="{{ route('contact') }}">Contact</a></li>
                     </ul>

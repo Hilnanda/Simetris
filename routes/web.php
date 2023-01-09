@@ -23,6 +23,8 @@ Route::namespace('User')->group(function () {
     Route::get('/pricing', 'PricingController@index')->name('pricing');
     Route::get('/products', 'ProductsController@index')->name('products');
     Route::get('/portofolio', 'WorkController@index')->name('portofolio');
+    Route::get('/service', 'ServiceController@index')->name('service');
+    Route::get('/detail/{id}', 'DetailController@index');
 });
 
 Route::post('/add-message', 'admin\MessageController@store')->name('add-message');

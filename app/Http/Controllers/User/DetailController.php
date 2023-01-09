@@ -3,23 +3,26 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\AboutUs;
-use App\Models\ContactUs;
+use App\Models\Article;
+use App\Models\Feature;
 use Illuminate\Http\Request;
 
-class ContactController extends Controller
+class DetailController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        $contact_us = ContactUs::first();
-        $about_us = AboutUs::first();
-        return view('user.pages.contact',
-        compact('contact_us','about_us'));
+        $feature = Feature::all();
+        $article = Article::find($id);
+        $recent_article = Article::orderBy('created_at', 'desc')->take(5)->get();
+        return view(
+            'user.pages.detail',
+            compact('feature','article','recent_article')
+        );
     }
 
     /**

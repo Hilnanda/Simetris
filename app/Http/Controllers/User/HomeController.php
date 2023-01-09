@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Article;
 use App\Models\Carousel;
+use App\Models\Category;
+use App\Models\Feature;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -16,9 +19,18 @@ class HomeController extends Controller
     public function index()
     {
         $carousel = Carousel::all();
-        return view('user.pages.home',
-        compact('carousel')
-    );
+        $feature = Feature::all();
+        $article = Article::all()->take(3);
+        $category = Category::all();
+        return view(
+            'user.pages.home',
+            compact(
+                'carousel', 
+                'feature',
+                'article',
+                'category',
+                )
+        );
     }
 
     /**

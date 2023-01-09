@@ -3,11 +3,9 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\AboutUs;
-use App\Models\ContactUs;
 use Illuminate\Http\Request;
 
-class ContactController extends Controller
+class ServiceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +14,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $contact_us = ContactUs::first();
-        $about_us = AboutUs::first();
-        return view('user.pages.contact',
-        compact('contact_us','about_us'));
+        //
     }
 
     /**

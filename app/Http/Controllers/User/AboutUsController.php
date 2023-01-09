@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\AboutUs;
+use App\Models\Feature;
+use App\Models\Team;
 use Illuminate\Http\Request;
 
 class AboutUsController extends Controller
@@ -14,7 +17,13 @@ class AboutUsController extends Controller
      */
     public function index()
     {
-        return view('user.pages.about');
+        $about_us = AboutUs::first();
+        $feature = Feature::all();
+        $team = Team::all();
+        return view(
+            'user.pages.about',
+            compact('about_us','feature','team')
+        );
     }
 
     /**

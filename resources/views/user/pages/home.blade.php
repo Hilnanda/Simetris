@@ -16,22 +16,23 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
             @foreach ($carousel as $item)
-            <div class="item {{ ($loop->index + 1 %2 != 2) ? 'active' : '' }}">
-                <img class="img-responsive" src="{{ asset('image/carousel/' . $item->carousell_image . '') }}" alt="Slider Image">
-                <div class="container">
-                    <div class="carousel-centered">
-                        <div class="margin-b-40">
-                            <h1 class="carousel-title">{{ $item->carousell_title }}</h1>
-                            <p>{!! $item->carousell_desc !!}</p>
+                <div class="item {{ $loop->index + (1 % 2) != 2 ? 'active' : '' }}">
+                    <img class="img-responsive" src="{{ asset('image/carousel/' . $item->carousell_image . '') }}"
+                        alt="Slider Image">
+                    <div class="container">
+                        <div class="carousel-centered">
+                            <div class="margin-b-40">
+                                <h1 class="carousel-title">{{ $item->carousell_title }}</h1>
+                                <p>{!! $item->carousell_desc !!}</p>
+                            </div>
+                            <a href="#" class="btn-theme btn-theme-sm btn-white-brd text-uppercase">Explore</a>
                         </div>
-                        <a href="#" class="btn-theme btn-theme-sm btn-white-brd text-uppercase">Explore</a>
                     </div>
                 </div>
-            </div>
             @endforeach
 
-           
-            
+
+
         </div>
     </div>
     <!--========== SLIDER ==========-->
@@ -41,7 +42,25 @@
     <div class="bg-color-sky-light" data-auto-height="true">
         <div class="content-lg container">
             <div class="row row-space-1 margin-b-2">
-                <div class="col-sm-4 sm-margin-b-2">
+                @foreach ($feature as $item)
+                    <div class="col-sm-4 sm-margin-b-2" style="margin-bottom: 20px">
+                        <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".3s">
+                            <div class="service" data-height="height">
+                                
+                                <div class="service-info">
+                                    <div>
+                                        {!! $item->feature_icon !!}
+                                    </div>
+                                    <h3>{{ $item->feature_title }}</h3>
+                                    <p class="margin-b-5">{!! $item->feature_desc !!}
+                                    </p>
+                                </div>
+                                <a href="" class="content-wrapper-link"></a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+                {{-- <div class="col-sm-4 sm-margin-b-2">
                     <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".3s">
                         <div class="service" data-height="height">
                             <div class="service-element">
@@ -85,11 +104,11 @@
                             <a href="#" class="content-wrapper-link"></a>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
             <!--// end row -->
 
-            <div class="row row-space-1">
+            {{-- <div class="row row-space-1">
                 <div class="col-sm-4 sm-margin-b-2">
                     <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".4s">
                         <div class="service" data-height="height">
@@ -135,7 +154,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!--// end row -->
         </div>
     </div>
@@ -145,7 +164,7 @@
     <div class="content-lg container">
         <div class="row margin-b-40">
             <div class="col-sm-6">
-                <h2>Latest Products</h2>
+                <h2>Article</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incididunt ut laboret dolore magna
                     aliqua enim minim veniam exercitation</p>
             </div>
@@ -154,21 +173,27 @@
 
         <div class="row">
             <!-- Latest Products -->
+            @foreach ($article as $item)
             <div class="col-sm-4 sm-margin-b-50">
                 <div class="margin-b-20">
                     <div class="wow zoomIn" data-wow-duration=".3" data-wow-delay=".1s">
-                        <img class="img-responsive" src="img/970x647/01.jpg" alt="Latest Products Image">
+                        <img class="img-responsive" src="{{ asset('image/article/' . $item->article_image . '') }}" alt="Latest Products Image">
                     </div>
                 </div>
-                <h4><a href="#">Triangle Roof</a> <span class="text-uppercase margin-l-20">Management</span></h4>
-                <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor magna ut
-                    consequat siad esqudiat dolor</p>
-                <a class="link" href="#">Read More</a>
+                <h4><a href="#">{{ $item->article_title }}</a> <span
+                        class="text-uppercase margin-l-20">{{ $item->category->category_name }}</span></h4>
+                @if (strlen($item->article_desc) < 100)
+                    <p>{!! $item->article_desc !!}</p>
+                @else
+                    <p>{!! substr($item->article_desc, 0, 100) . '.....' !!}</p>
+                @endif
+                <a class="link" href="/detail/{{ $item->id }}">Read More</a>
             </div>
+            @endforeach
             <!-- End Latest Products -->
 
             <!-- Latest Products -->
-            <div class="col-sm-4 sm-margin-b-50">
+            {{-- <div class="col-sm-4 sm-margin-b-50">
                 <div class="margin-b-20">
                     <div class="wow zoomIn" data-wow-duration=".3" data-wow-delay=".1s">
                         <img class="img-responsive" src="img/970x647/02.jpg" alt="Latest Products Image">
@@ -178,11 +203,11 @@
                 <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor magna ut
                     consequat siad esqudiat dolor</p>
                 <a class="link" href="#">Read More</a>
-            </div>
+            </div> --}}
             <!-- End Latest Products -->
 
             <!-- Latest Products -->
-            <div class="col-sm-4 sm-margin-b-50">
+            {{-- <div class="col-sm-4 sm-margin-b-50">
                 <div class="margin-b-20">
                     <div class="wow zoomIn" data-wow-duration=".3" data-wow-delay=".1s">
                         <img class="img-responsive" src="img/970x647/03.jpg" alt="Latest Products Image">
@@ -192,7 +217,7 @@
                 <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor magna ut
                     consequat siad esqudiat dolor</p>
                 <a class="link" href="#">Read More</a>
-            </div>
+            </div> --}}
             <!-- End Latest Products -->
         </div>
         <!--// end row -->

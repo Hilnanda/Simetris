@@ -20,10 +20,9 @@
                 <div class="col-sm-4 sm-margin-b-30">
                     <!-- List -->
                     <ul class="list-unstyled footer-list">
-                        <li class="footer-list-item"><a class="footer-list-link" href="#">Twitter</a></li>
-                        <li class="footer-list-item"><a class="footer-list-link" href="#">Facebook</a></li>
-                        <li class="footer-list-item"><a class="footer-list-link" href="#">Instagram</a></li>
-                        <li class="footer-list-item"><a class="footer-list-link" href="#">YouTube</a></li>
+                        @foreach ($sosmed_global as $item)
+                        <li class="footer-list-item"><a class="footer-list-link" href="{{ $item->sosmed_url }}">{{ $item->sosmed_nama }}</a></li>
+                        @endforeach
                     </ul>
                     <!-- End List -->
                 </div>
