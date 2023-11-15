@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\Category;
 use App\Repositories\ArticleRepository;
-use App\Repositories\categoryRepository;
+use App\Repositories\CategoryRepository;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
