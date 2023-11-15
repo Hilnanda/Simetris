@@ -13,7 +13,7 @@ Lorem ipsum dolor amet consectetur adipiscing dolore magna aliqua <br/> enim min
 
     <!--========== PAGE LAYOUT ==========-->
     <!-- Our Exceptional Solutions -->
-    <div class="container-fluid" style="margin-top: -40px;padding:80px">
+    <div class="content-lg container" style="margin-top: -75px" style="margin-top: 20px">
         <div class="row">
             <div class="col-md-6">
                 {{-- <h2>About</h2> --}}
@@ -25,14 +25,14 @@ Lorem ipsum dolor amet consectetur adipiscing dolore magna aliqua <br/> enim min
         </div>
         <!--// end row -->
 
-        <div class="row">
-            <div class="col-md-8">
+        <div class="row margin-b-50">
+            <div class="col-md-8" >
                 <!-- Our Exceptional Solutions -->
             @foreach ($article as $item)    
             <div class="col-sm-4 sm-margin-b-50" style="margin-bottom: 20px">
                 <div class="margin-b-20">
                     <div class="wow zoomIn" data-wow-duration=".3" data-wow-delay=".1s">
-                        <img class="img-responsive" style="max-width: 350px;border-radius: 5px" src="{{ asset('image/article/' . $item->article_image . '') }}" alt="Latest Products Image">
+                        <img class="img-responsive" style="max-width: 200px;border-radius: 5px" src="{{ asset('image/article/' . $item->article_image . '') }}" alt="Latest Products Image">
                     </div>
                 </div>
                 <h4><a href="/detail/{{ $item->id }}">{{ $item->article_title }}</a> <span
@@ -53,12 +53,12 @@ Lorem ipsum dolor amet consectetur adipiscing dolore magna aliqua <br/> enim min
                     @foreach ($recent_article as $item)
                     <div class="row">
                         <a href="/detail/{{ $item->id }}">
-                        <div class="col-sm-4">
+                        <div class="col-sm-12">
                             <img class="img-responsive" style="max-width: 170px;border-radius: 5px" src="{{ asset('image/article/' . $item->article_image . '') }}" alt="Our Office">
                         </div>
-                        <div class="col-sm-8">
+                        <div class="col-sm-12" style="margin-top: 20px">
                             <h5>{{ $item->article_title }}</h5>
-                            <p style="margin-top: -5px">{{ date('l, d M Y H:i', strtotime($item->created_at)) }} WIB</p>
+                            <p style="margin-top: 5px;">{{ date('l, d M Y H:i', strtotime($item->created_at)) }} WIB</p>
                         </div>
                     </a>
                     </div>
