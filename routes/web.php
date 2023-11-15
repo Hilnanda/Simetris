@@ -21,6 +21,7 @@ Route::namespace('User')->group(function () {
     Route::get('/contact', 'ContactController@index')->name('contact');
     Route::get('/faq', 'FaqController@index')->name('faq');
     Route::get('/pricing', 'PricingController@index')->name('pricing');
+    Route::get('/article', 'ArticleController@index')->name('article');
     Route::get('/products', 'ProductsController@index')->name('products');
     Route::get('/portofolio', 'WorkController@index')->name('portofolio');
     Route::get('/service', 'ServiceController@index')->name('service');

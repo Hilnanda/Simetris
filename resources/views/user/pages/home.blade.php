@@ -172,7 +172,7 @@
         <!--// end row -->
 
         <div class="row">
-            <!-- Latest Products -->
+            <!-- Latest article -->
             @foreach ($article as $item)
             <div class="col-sm-4 sm-margin-b-50">
                 <div class="margin-b-20">
@@ -180,7 +180,7 @@
                         <img class="img-responsive" src="{{ asset('image/article/' . $item->article_image . '') }}" alt="Latest Products Image">
                     </div>
                 </div>
-                <h4><a href="#">{{ $item->article_title }}</a> <span
+                <h4><a href="/detail/{{ $item->id }}">{{ $item->article_title }}</a> <span
                         class="text-uppercase margin-l-20">{{ $item->category->category_name }}</span></h4>
                 @if (strlen($item->article_desc) < 100)
                     <p>{!! $item->article_desc !!}</p>
