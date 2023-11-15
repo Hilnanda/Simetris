@@ -32,7 +32,7 @@ Route::post('/add-message', 'admin\MessageController@store')->name('add-message'
 
 Auth::routes();
 
-Route::namespace('admin')
+Route::namespace('Admin')
 ->middleware('auth')->group(function () {
     // home
     // carousel
